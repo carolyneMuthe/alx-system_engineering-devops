@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -a | sort -V | awk '{printf "%s%s", $0, (NR==NF ? "\n" : ", ")}' | sed 's/$/\//'
+ls -a | awk '{printf "%s%s", ($0~/^\./ && $0!~/^\.{1,2}$/) ? $0"/" : $0, (NR==NF ? "\n" : ", ")}'
