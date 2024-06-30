@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lA . | tee /dev/tty | (echo -e "\n..:"; ls -lA ..) | (echo -e "\n/boot:"; ls -lA /boot)
+ls -al . .. /boot
