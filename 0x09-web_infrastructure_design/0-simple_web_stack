@@ -1,0 +1,32 @@
+# One Server Web Infrastructure Design
+
+## Infrastructure Overview:
+- **Server**: One machine hosting the website.
+- **Web Server**: Nginx handles incoming HTTP requests and serves static content.
+- **Application Server**: Runs the backend logic and generates dynamic content.
+- **Database**: MySQL stores all persistent data.
+- **Domain Name**: `www.foobar.com` points to IP `8.8.8.8`.
+
+## Explanation of Components:
+1. **What is a Server?**
+   - A server is a machine that hosts the website and handles requests.
+2. **Role of the Domain Name**:
+   - The domain name `www.foobar.com` resolves to the server's IP, simplifying access.
+3. **DNS Record for `www.foobar.com`**:
+   - The DNS `CNAME` record for `www.foobar.com` points to the IP address `8.8.8.8`.
+4. **Role of the Web Server (Nginx)**:
+   - Handles HTTP requests, serves static files, and passes dynamic content to the application server.
+5. **Role of the Application Server**:
+   - Processes dynamic content and communicates with the MySQL database.
+6. **Role of the Database (MySQL)**:
+   - Stores persistent data, such as user information, posts, etc.
+7. **Communication**:
+   - The browser communicates with Nginx over HTTP/HTTPS. Nginx talks to the application server for dynamic content. The application server interacts with MySQL for data.
+
+## Diagram:
+- Here’s a link to the diagram I created to explain the web stack, file:///C:/Users/Carol%E2%9D%A4/Downloads/whiteboard.webp.
+
+## Issues with this Infrastructure:
+- **SPOF**: If the server goes down, the entire website goes down as there's no redundancy.
+- **Downtime for Maintenance**: If the web server needs a restart, there will be downtime.
+- **Scalability**: Unable to scale if there's too much traffic as everything is hosted on a single server.
